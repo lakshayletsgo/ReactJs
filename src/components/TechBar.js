@@ -4,25 +4,38 @@ function TechBar(props) {
   const handleUpClick = () => {
     const val = value.toLowerCase();
     setValue(val);
+    props.showAlert("Converted to Lower Case","success");
   };
   const handleLowClick = () => {
     const val2 = value.toUpperCase();
     setValue(val2);
+    props.showAlert("Converted to Upper Case","success");
   };
   const handleClearClick = () => {
     const val = "";
     setValue(val);
+    props.showAlert("Area Cleared","success");
   };
   const handleCopyText = () => {
     const txt = document.getElementById("myBox");
     txt.select();
     navigator.clipboard.writeText(txt.value);
+    props.showAlert("Copied to clipboard ","success")
   };
 
   const handleOnChange = (event) => {
     console.log("There is some value the user has put in ");
     setValue(event.target.value);
   };
+  const valueEval=(vale)=>{
+    let arr = vale.split(" ");
+    if(arr[arr.length-1]===""){
+      return vale.split(" ").length-1;
+    }else{
+      return vale.split(" ").length;
+      
+    }
+  }
   const [value, setValue] = useState("");
   return (
     <div className="container" 
@@ -52,7 +65,7 @@ function TechBar(props) {
       </button>
       <h3 className="mt-5">You have entered </h3>
       <h5>No of letters: {value.length}</h5>
-      <h5>No of words: {value.split(" ").length}</h5>
+      <h5>No of words: {valueEval(value)}</h5>
       <h4 className="mt-4">
         You can read this entire paragraph in {0.008 * value.split(" ").length}{" "}
         min
