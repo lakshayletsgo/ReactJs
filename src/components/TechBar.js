@@ -38,7 +38,7 @@ function TechBar(props) {
   }
   const [value, setValue] = useState("");
   return (
-    <div className="container" 
+    <div className="container mt-4" 
     style={{color:props.mode==='dark'?'white':'black'}}>
       <h1>{props.head}</h1>
       <div className="mb-3 my-3">
